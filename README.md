@@ -1,2 +1,4 @@
 # LiveIt
-this is my graduation 'project
+this is my graduation project
+
+by #TwoPig Team
