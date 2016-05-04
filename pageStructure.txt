@@ -1,0 +1,12 @@
++登录/注册
+	-login.html     
+	-register.html
++底部导航
+	+首页(大厅)
+		-index.html
+	+最近聊天
+		-recentChat.html
+	+通讯录
+		-contacts.html
+	+个人中心
+		-userCenter.html
