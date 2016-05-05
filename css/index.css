@@ -1,0 +1,21 @@
+.head{
+	width: 100%;
+	height: 50px;
+	background-color: #AE81FF;
+}
+.index_main{
+	width: 100%;
+	height: 300px;
+	background-color: #FFA7DF;
+	text-align: center;
+}
+.bottom{
+	width: 100%;
+	height: 50px;
+	background-color: #AE81FF;
+}
+.bottom ul li{
+	width: 24%;
+	display: inline-block;
+	list-style: none;
+}
