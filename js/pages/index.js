@@ -21,7 +21,7 @@ require(['mmHistory','mmRouter',"domReady!"], function() {
         pageUrl:"home.html"  //默认为home.html
     });
     function callback() {
-        if(this.path==="/index"){
+        if((this.path==="/") || (this.path==="/")){
             vm.pageUrl="home.html"; //如果url后缀变成"#!/index"，则pageUrl为“mine.html”
         }else {
             var path_tail = this.path.replace(/\//, ""); //去掉this.path值的第一个斜杠
