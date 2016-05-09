@@ -1,32 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>首页</title>
-	<link rel="stylesheet" type="text/css" href="/stylesheets/normalize.css" />
-	<link rel="stylesheet" type="text/css" href="/stylesheets/index.css">
-	<script src="/javascripts/lib/require.js" type="text/javascript" data-main="/javascripts/pages/index"></script>
-</head>
+<% include partials/head.html%>
 <body ms-controller="index" class="ms-controller">
-<script type="text/javascript">
-    //这里给后端提供数据接口
-    var conf = {
-        username: {"id": "11", "name": "张州凤"}
-    }
-</script>
 	<div class="head">
 		<a href="">返回</a>
 		<span>LiveIt</span>
-		<span>{{username.name}}</span>
+		<span>{{name}}-{{sex}}</span>
 	</div>
-	<div class="index_main" ms-include-src="pageUrl"></div>
-	<div class="bottom">
-		<ul>
-			<li><a href="#!/">首页</a></li>
-			<li><a href="#!/recentChat">最近聊天</a></li>
-			<li><a href="#!/contacts">通讯录</a></li>
-			<li><a href="#!/userCenter">个人中心</a></li>
-		</ul>
+	<div class="index_main" ms-include-src="pageUrl" >
+		 <!-- <%include partials/home.html%> -->
 	</div>
+	<% include partials/foot.html%>
 </body>
 </html>
+<script>
+	var vm = avalon.define({
+		$id:"index",
+		name:"",
+		sex:"女",
+		pageUrl:"home.html",
+		init:function(){
+			$.ajax({
+			url: '/getindex',
+			type: 'GET',
+			success:function(data){
+				vm.name = data.name;
+			}
+		});
+		},
+		getContent:function(page){
+			vm.pageUrl = page+".html"
+			console.log(vm.pageUrl);
+		}
+	});
+	avalon.scan();
+	vm.init();
+</script>
