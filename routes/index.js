@@ -6,9 +6,9 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' ,name:"张州凤"});
 });
 //主页面
-router.get('/home.html', function(req, res, next) {
-  console.log("进入home.html-------");
-  res.render('home');
+router.get('/find.html', function(req, res, next) {
+  console.log("进入find.html-------");
+  res.render('find');
 });
 //最近聊天
 router.get('/recentChat.html', function(req, res, next) {
