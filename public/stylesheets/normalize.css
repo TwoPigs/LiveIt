@@ -1,7 +1,4 @@
-*{
-	margin: 0;
-	padding: 0;
-}
+
 article, aside, details, figcaption, figure, footer, header, main, nav, section, summary {
 	display: block;
 }
@@ -140,4 +137,26 @@ table {
 ul li{
 	display: inline-block;
 	list-style: none;
+}
+/*声明 WebFont*/
+@font-face {
+  font-family: 'Amable';
+   src: url('../fonts/amable/fonts/Amable.eot');
+  src:
+    url('../fonts/amable/Amable.eot?#font-spider') format('embedded-opentype'),
+    url('../fonts/amable/Amable.woff') format('woff'),
+    url('../fonts/amable/Amable.ttf') format('truetype'),
+    url('../fonts/amable/Amable.svg') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+body{
+	background-color: #F8F8F8;
+}
+*{
+	margin: 0;
+	padding: 0;
+}
+a{
+	tetx-decoration:none;
 }

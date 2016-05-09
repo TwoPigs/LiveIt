@@ -1,21 +1,109 @@
-.head{
+/*声明 WebFont*/
+@font-face {
+  font-family: 'Amable';
+    src: url('../fonts/amable/fonts/Amable.eot');
+  src:
+    url('../fonts/amable/Amable.eot?#font-spider') format('embedded-opentype'),
+    url('../fonts/amable/Amable.woff') format('woff'),
+    url('../fonts/amable/Amable.ttf') format('truetype'),
+    url('../fonts/amable/Amable.svg') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+/*------------共用-------------*/
+/* 头部*/
+.hd{
 	width: 100%;
 	height: 50px;
-	background-color: #AE81FF;
+	text-indent:10px;
+	color:#0090FA;
+	line-height: 50px;
+}
+.hd>span{
+	font-family:'Amable';
+	
+	font-weight: bolder;
+	font-size: 24px;
+}
+.hd>i{
+	font-size:30px;
+	float:right;
+	padding:10px;
 }
 .index_main{
 	width: 100%;
-	height: 300px;
-	background-color: #FFA7DF;
-	text-align: center;
+	height: auto;
+	background-color: #F8F8F8;
+	font-family:'Amable';
 }
 .bottom{
 	width: 100%;
 	height: 50px;
-	background-color: #AE81FF;
+	background-color: #F8F8F8;
+	display:flex;
+	border-top:1px solid #ECECEC;
+	border-bottom:1px solid #6EB0DC;
 }
-.bottom ul li{
+
+.bottom>ul{
+	display:flex;
+	padding: 0;
+	margin: 0;
+	width: 100%;
+	background-color: #F8F8F8;
+}
+.bottom>ul>li{
 	width: 24%;
 	display: inline-block;
 	list-style: none;
+	flex:1;
+	text-align:center;
+	line-height: 50px;
+}
+.bottom>ul>li>a{
+	text-decoration:none;
+}
+/*div居中*/
+.center{
+	margin: 0 auto;
+}
+.txt-ct{
+	text-align: center;
+}
+/*------------发现-------------*/
+/*发现的搜索框*/
+.fx{
+
+}
+.fx-search{
+	width: 90%;
+	height: 30px;
+	background-color: #fff;
+	color:#C5C5C5;
+	border:3px solid #F5F4F5;
+	border-radius: 15px;
+	line-height: 30px;
+}
+.baner{
+	width: 100%;
+	height: 150px;
+	margin-top:10px;
+	background: url(../images/banner01.png);
+}
+.fx-title{
+	height: 30px;
+	width: 90%;
+	background-color: #E9E9E9;
+	padding: 5px 5%;
+	border-bottom: #EEEEEE 1px solid;
+}
+.fx-title>span{
+	color:#000;
+	font-size: 14px;
+}
+.fx-title>a{
+	float: right;
+	font-size: 14px;
+	text-decoration: none;
+	color:#51A5D9;
 }

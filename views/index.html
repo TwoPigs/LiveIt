@@ -1,14 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <% include partials/head.html%>
-<body ms-controller="index" class="ms-controller">
-	<div class="head">
-		<a href="">返回</a>
+<body ms-controller="index">
+	<div class="hd">
 		<span>LiveIt</span>
-		<span>{{name}}-{{sex}}</span>
+		<i class="fa fa-plus-square-o"></i>
 	</div>
 	<div class="index_main" ms-include-src="pageUrl" >
-		 <!-- <%include partials/home.html%> -->
 	</div>
 	<% include partials/foot.html%>
 </body>
@@ -18,7 +16,7 @@
 		$id:"index",
 		name:"",
 		sex:"女",
-		pageUrl:"home.html",
+		pageUrl:"recentChat.html",
 		init:function(){
 			$.ajax({
 			url: '/getindex',
