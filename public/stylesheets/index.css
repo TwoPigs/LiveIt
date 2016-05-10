@@ -73,19 +73,7 @@
 .bottom>ul>li>a{
 	text-decoration:none;
 }
-/*div居中*/
-.center{
-	margin: 0 auto;
-}
-.txt-ct{
-	text-align: center;
-}
-.lf{
-	float: left;
-}
-.rt{
-	float: right;
-}
+
 /*------------发现-------------*/
 /*发现的搜索框*/
 .fx{
@@ -156,3 +144,124 @@
 }
 /*------消息------*/
 .msg{}
+/*------用户中心------*/
+.user{
+	background-color: #ECECEC;
+}
+.us-info{
+	width: 90%;
+	height: auto;
+	background-color: #fff;
+	padding: 10px 5%;
+	overflow: hidden;
+	display:flex;
+}
+.us-info>.us-img{
+	flex:1;
+	position:relative;
+}
+.us-info>.us-img>a>img{
+	width: 70px;
+	height: 70px;
+	border: #B7E8F5 4px solid;
+	border-radius: 37px;
+
+}
+.us-info>.us-img>i{
+	width:17px;
+	height:17px;
+	background-color:#B7E8F5;
+	border: #B7E8F5 1px solid;
+	border-radius:9px;
+	text-align:center;
+	line-height:17px;
+	position:absolute;
+	bottom:6px;
+	right:21px;
+}
+.us-info>.us-info-rt{
+	flex:2;
+	color:#C3C3C3;
+}
+
+.us-info>.us-info-rt>span{
+	
+	font-size:12px;
+	font-weight:500;
+}
+.us-tab{
+	width: 80%;
+	padding: 10px 10%;
+	border-top: 1px solid #F3F3F3;
+	border-bottom: 1px solid #F3F3F3;
+	overflow: hidden;
+	background-color: #fff;
+}
+.us-tab>.tab{
+	width: 49%;
+}
+.us-cards{
+	width: 90%;
+	padding: 10px 0;
+}
+/*---------发表的小卡片-----------*/
+.card{
+	width: 100%;	
+	background-color:#fff;
+	margin-bottom: 10px;
+}
+.card-title{
+	width: 90%;
+	padding: 10px 5%;
+	border-bottom: 1px solid #F3F3F3;
+	overflow: hidden;
+	font-size: 14px;
+}
+.card-title>img{
+	width:30px;
+	height:30px;
+	padding: 5px;
+}
+.card-text{
+	width: 90%;
+	height: auto;
+	padding: 10px 5%;
+}
+.card-foot{
+	width:90%;
+	padding:10px 5%;
+	background-color: #FAFAFA;
+	display: flex;
+	line-height:20px;
+}
+.card-foot>li{
+	flex:1;
+}
+/*------通用属性设置-----*/
+.center{
+	margin: 0 auto;
+}
+.txt-ct{
+	text-align: center;
+}
+.lf{
+	float: left;
+}
+.rt{
+	float: right;
+}
+.txt-black{
+	color:#000;
+}
+.txt-thm-bule{
+	color:#0090FA;
+}
+.ft-grey{
+	color:#DCDCDC;
+}
+.ft-sm{
+	font-size: 12px
+}
+.ft-mid{
+	font-size: 18px;
+}
