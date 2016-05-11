@@ -41,7 +41,10 @@ app.use(partials());
 
 //session & cookie
 app.use(cookieParser("secret"));
-app.use(session(session({secret: 'hello!ziazan', resave: true, saveUninitialized: true})));
+app.use(session({secret: 'hello!ziazan', 
+  resave: true, 
+  saveUninitialized: true
+}));
 app.use(passport.initialize());
 app.use(passport.session());
 //为用户验证指定了使用用户名与密码进行验证（Basic）的验证策略

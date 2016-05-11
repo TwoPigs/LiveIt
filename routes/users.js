@@ -40,9 +40,13 @@ router.post('/signin', passport.authenticate('local'), function(req, res) {
     //     	data.code = 1;
     //    		data.message = "登录成功~";
     //     }
-          data.code = 1;
-          data.message = "登录成功~";
-        return res.json(data);
+    // 此时，不仅设置了cookie，还设置了对应的哈希值
+    req.session.authenticated = true; 
+    // 在cookie中，设置键authenticated的值为true
+    res.cookie('authenticated', true);  
+    data.code = 1;
+    data.message = "登录成功~";
+    return res.json(data);
 });
 
 //注册操作

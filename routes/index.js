@@ -3,6 +3,10 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
+  // 在设置authenticated之前，express-session会进行验证，这里我们得到了安全的session
+  // 如果cookie未被设置过authenticated则重定向 
+  if(!req.cookies.authenticated || !req.session.authenticated) return res.redirect('/account/login');
+  console.log(req.user);
   res.render('index', { title: 'LiveIt' ,name:"张州凤"});
 });
 //主页面
