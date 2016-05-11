@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 //layout 模板
 var partials = require('express-partials');
 
+//路由表
 var routes = require('./routes/index');
 var users = require('./routes/users');
 
@@ -29,8 +30,13 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+//路由设置
+
+//根页面请求
 app.use('/', routes);
-app.use('/users', users);
+
+//帐户类型的请求放在这里
+app.use('/account', users);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
