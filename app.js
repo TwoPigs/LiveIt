@@ -6,6 +6,8 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 //layout 模板
 var partials = require('express-partials');
+//mongoose 数据库操作
+var mongoose = require('mongoose');
 
 //路由表
 var routes = require('./routes/index');
@@ -19,8 +21,18 @@ app.set('views', path.join(__dirname, 'views'));
 //添加以下  
 app.engine('.html',require('ejs').__express);  
 app.set('view engine', 'html'); 
-//使用layout模板
-app.use(partials());
+
+//数据库连接
+mongoose.connect('mongodb://localhost/test');
+
+//数据库连接测试
+var Cat = mongoose.model('Cat',{name:String});
+var kitty = new Cat({name:"ziazan"});
+kitty.save(function(err){
+  if (err) 
+    console.log(err);
+  console.log('meow');
+});
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -29,7 +41,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
+//使用layout模板
+app.use(partials());
 //路由设置
 
 //根页面请求

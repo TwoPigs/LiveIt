@@ -3,7 +3,7 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' ,name:"张州凤"});
+  res.render('index', { title: 'LiveIt' ,name:"张州凤"});
 });
 //主页面
 router.get('/find.html', function(req, res, next) {
@@ -26,7 +26,7 @@ router.get('/userCenter.html', function(req, res, next) {
   res.render('userCenter');
 });
 router.get('/getindex', function(req, res, next) {
-  res.json({ title: 'Express' ,name:"张州凤"});
+  res.json({ title: 'LiveIt' ,name:"张州凤"});
 });
 
 module.exports = router;
