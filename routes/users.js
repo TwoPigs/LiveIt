@@ -45,18 +45,24 @@ router.post('/register', function(req, res, next) {
     if(username.length === 0 || password.length === 0 || email.length === 0){
 	     	data.code = 0;
 	        data.message = "用户名,密码或邮箱不合法~";
+          return res.json(data);
         }else if(usernameExist){// 将来会在这里检查用户名是否存在，我们先把它设为true
         	data.code = 0;
 	        data.message = "用户名已存在~";
+          return res.json(data);
         }else{
-        	data.code = 1;
-       		data.message = "注册成功~";
         	User.create({username: username, password: password, email: email},
             function(err, user) {
-                if (err) return next(err);    // 交给接下来的错误处理中间件
-       			return res.json(data);
+                if (err) {
+                  data.code = 0;
+                  data.message = err.errmsg;
+                  return res.json(data);
+                };    // 交给接下来的错误处理中间件
+                data.code = 1;
+                data.message = "注册成功~";
+                console.log(data);
+                return res.json(data);
             });
         }
-        return res.json(data);
 });
 module.exports = router;
