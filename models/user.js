@@ -29,6 +29,10 @@ var UserSchema = new Schema({
     joinTime: {
         type: Date,
         default: Date.now()
+    },
+    hearts: {
+        type: Number,
+        default: 0
     }
 });
 

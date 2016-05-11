@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<% include partials/head.html%>
+<body>
+	<% include partials/hd_back.html%>
+	<div class="setting" ms-controller="setting">
+		<div class="st-info">
+			<img src="/images/user-img.jpeg" alt="">
+			<p class="txt-thm-bule">{{data.username}}</p>
+		</div>
+		<ul class="group">
+			<li><span>个性签名:</span>{{data.description}}</li>
+			<li><span>邮箱:</span>{{data.email}}</li>
+			<li><span>收获赞:</span>{{data.hearts}}</li>
+			<li><span>发布数:</span>{{data.publishNum}}</li>
+			<li><span>频道数:</span>{{data.joinChatNum}}</li>
+			<li>修改密码</li>
+		</ul>
+	</div>
+	<% include partials/logo.html%>
+</body>
+</html>
+<script>
+	var username = GetQueryString("username")
+	var vm_setting = avalon.define({
+		$id:"setting",
+		data:{
+			username: "",
+			photo:"/images/user-img.jpeg",
+			publishNum: "",
+			email: "",
+			heatr: "0",
+			publishNum: "",
+			joinChatNum: ""
+
+		},
+		init:function(){
+			$.ajax({
+				url: '/user/getUserInfo',
+				type: 'POST',
+				dataType: 'json',
+				data: {username:username},
+				success:function(data){
+					console.log(data);
+					if(data.code){
+						vm_setting.data = data.bizData;
+					}
+				}
+			});	
+		}
+	});
+	avalon.scan();
+	vm_setting.init();
+</script>

@@ -5,7 +5,7 @@ var User = require('../models/user');
 
 //用户设置
 router.get('/setting.html',function(req,res){
-	res.render("setting");
+	res.render('setting', {title: "用户设置", head:"用户设置", backUrl:"/"});
 });
 
 //获得用户信息
