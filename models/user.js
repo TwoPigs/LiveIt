@@ -24,7 +24,7 @@ var UserSchema = new Schema({
     },
     lastLoginTime: {
         type: Date,
-        default: Date.now();
+        default: Date.now()
     },
     joinTime: {
         type: Date,
