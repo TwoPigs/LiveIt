@@ -29,10 +29,11 @@
 	font-weight: bolder;
 	font-size: 24px;
 }
-.hd>i{
+.hd>a>i{
 	font-size:30px;
 	float:right;
 	padding:10px;
+	color: #0090FA;
 }
 .hd_back{
 	border-bottom: 1px solid #CBCBCB;
@@ -96,6 +97,41 @@
 	font-weight: bolder;
 	font-size: 30px;
 }
+/*底部输入框*/
+.ft-input{
+	width: 100%;
+	height: auto;
+	min-height: 50px;
+	max-height: 100px;
+	position:fixed;
+	bottom: 0;
+	left: 0;
+	display: flex;
+	background-color: #fff;
+}
+.ft-input>img{
+	max-height: 50px;
+	float: left;
+	flex:1;
+}
+.ft-input>textarea{
+	float: left;
+	flex:4;
+	border: none;
+}
+.ft-input>button{
+	height: 30px;
+	margin: 10px 0;
+	flex:1;
+	float: right;
+	color:#0093FF;
+	text-align: center;;
+	line-height: 30px;
+	border:1px solid #FFFFFF;
+	border-radius:5px;
+	background-color: #F0F0EF;
+}
+
 /*------------发现-------------*/
 /*发现的搜索框*/
 .fx{
@@ -228,6 +264,10 @@
 	padding: 10px 0;
 }
 /*---------发表的小卡片-----------*/
+.cards{
+	width: 90%;
+	padding: 10px 5%;
+}
 .card{
 	width: 100%;	
 	background-color:#fff;
@@ -295,6 +335,55 @@
 	width: 80px;
 	padding-right: :20px;
 	text-align: left;
+}
+/*-----------频道-------------*/
+.pindao_index{
+	height: 100%;
+	background-color: #fff;
+	text-align: center;
+	color:#B0B0B0;
+	padding: 30px 0;
+}
+.pindao_index>button{
+	padding: 10px 50px;
+	border: 1px solid #fff;
+	border-radius:10px;
+	background-color: #7ECAFE;
+}
+/*创建频道*/
+.pd-ct-main{
+	padding: 10px 10%;
+	text-align: center;
+}
+.pd-ct-img{
+	width: 100%;
+	text-align: center;
+}
+.pd-ct-img>img{
+	width: 150px;
+	height: 150px;
+}
+.pd-ct-main>form>input,.pd-ct-main>form>textarea,.pd-ct-main>form>a{
+	display: inline-block;
+	margin-bottom: 5px;
+	border:1px solid #fff;
+	border-radius: 5px;
+	background-color: #F5F5F5;
+	color:#CBCBCB;
+	padding: 5px;
+}
+.pd-ct-main>form>a{
+	text-align: center;
+	color:#fff;
+	background-color: #0093FF;
+	padding: 10px 50px;
+	text-decoration: none;
+}
+/*频道窗口*/
+.pd_cards{
+	width: 95%;
+	padding: 10px 0;
+	margin: auto;
 }
 /*------通用属性设置-----*/
 .center{
