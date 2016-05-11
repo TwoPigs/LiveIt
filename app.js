@@ -14,9 +14,11 @@ var passport = require('passport');
 
 //数据模型
 User = require('./models/user');
+
 //路由表
 var routes = require('./routes/index');
-var users = require('./routes/users');
+var account = require('./routes/account');
+var user = require('./routes/user');
 
 var app = express();
 
@@ -52,9 +54,10 @@ passport.use(User.createStrategy());
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-//-------------路由设置
+//---路由设置
 app.use('/', routes);
-app.use('/account', users);
+app.use('/account', account);//登录注册
+app.use('/user',user);//用户信息类型
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

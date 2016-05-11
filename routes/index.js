@@ -19,11 +19,13 @@ router.get('/recentChat.html', function(req, res, next) {
   console.log("进入recentChat.html-------");
   res.render('recentChat');
 });
+
 //通讯录
 router.get('/messages.html', function(req, res, next) {
   console.log("进入messages.html-------");
   res.render('messages');
 });
+
 //个人中心
 router.get('/userCenter.html', function(req, res, next) {
   console.log("进入userCenter.html-------");

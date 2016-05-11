@@ -1,21 +1,21 @@
-<div class="user">
+<div class="user" ms-important = "userInfo" id="userInfo">
 	<div class="us-info">
 		<div class="us-img lf">
 			<a href="/setting.html">
-				<img src="/images/user-img.jpeg" alt="">
+				<img ms-src="data.photo" alt="">
 			</a>
 			<i class="fa fa-cog txt-thm-bule"></i>
 		</div>
 		<div class="us-info-rt rt">
-			<p class="txt-thm-bule">ziazan</p>
-			<span>已发布</span><span class="txt-black">4</span>
-			<span>频道数</span><span class="txt-black">5</span><br>
-			<span>2016-05-05加入</span>
+			<p class="txt-thm-bule">{{data.username}}</p>
+			<span>已发布</span><span class="txt-black">{{data.publishNum}}</span>
+			<span>频道数</span><span class="txt-black">{{data.joinChatNum}}</span><br>
+			<span>{{data.joinTime}}加入</span>
 		</div>
 	</div>
 	<div class="us-tab">
-		<div class="tab lf txt-ct">按时间</div><span class="lf">|</span>
-		<div class="tab lf txt-ct">按频道</div>
+		<div class="tab lf txt-ct" ms-click="queryCondition(0)">按时间</div><span class="lf">|</span>
+		<div class="tab lf txt-ct" ms-click="queryCondition(1)">按频道</div>
 	</div>
 	<div class="us-cards center">
 		<div class="card">
@@ -41,3 +41,32 @@
 		</div>
 	</div>
 </div>
+<script>
+	var vm_user = avalon.define({
+		$id:"userInfo",
+		data:{},
+		init:function(username){
+			$.ajax({
+				url: '/user/getUserInfo',
+				type: 'POST',
+				dataType: 'json',
+				data: {username:username},
+				success:function(data){
+					console.log(data);
+					if(data.code){
+						vm_user.data = data.bizData;
+					}
+				}
+			});	
+		},
+		queryCondition:function(flag){
+			if (flag) {
+				alert("按频道"+flag);
+			}else{
+				alert("按时间"+flag);
+			}
+		}
+	});
+	avalon.scan($("#userInfo")[0],vm_user);
+	vm_user.init("ziazan");
+</script>

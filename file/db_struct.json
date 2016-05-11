@@ -1,0 +1,20 @@
+
+user_table {
+	_id: objectid,
+	username: string, //用户名
+	pwd: string,
+	nickname: string, //昵称
+	isdisturb: boolean //是否免打扰
+}
+
+contact_table {
+	_id: objectid,
+	userid: objectid,
+	contacter: [objectid1, objectid2, objectid3...] //联系人
+}
+
+topic_table {
+	_id: objectid,
+	topicname: string,
+	initiator: objectid, //发起人
+}

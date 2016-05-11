@@ -5,18 +5,30 @@ var passportLocalMongoose = require('passport-local-mongoose');
 var UserSchema = new Schema({
     username: {type: String, index: {unique: true}},
     password: String,
-    email: String,
+    email: String,    
     photo: {
         type: String,
         default: '/images/user-img.jpeg'
     },
-    title: {
-        type: String,
-        default: '未命名博客'
-    },
     description: {
         type: String,
         default: '这里是Ta的签名...'
+    },
+    joinChatNum: {
+        type: Number,
+        default: 0
+    },
+    publishNum: {
+        type: Number,
+        default: 0
+    },
+    lastLoginTime: {
+        type: Date,
+        default: Date.now();
+    },
+    joinTime: {
+        type: Date,
+        default: Date.now()
     }
 });
 
