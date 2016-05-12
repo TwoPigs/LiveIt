@@ -1,0 +1,52 @@
+> apress = ( { "Type" : "Technical Publisher", "Category" :["IT","Software","Programming"] } )
+{
+        "Type" : "Technical Publisher",
+        "Category" : [
+                "IT",
+                "Software",
+                "Programming"
+        ]
+}
+> db.publisherscollection.save(apress)
+> apress
+{
+        "Type" : "Technical Publisher",
+        "Category" : [
+                "IT",
+                "Software",
+                "Programming"
+        ],
+        "_id" : ObjectId("53588c221697e7511678752c")
+}
+> book = { "Type" : "Book", "Title" : "Definitive Guide to MongoDB, the", "ISBN" : "987-1-4302-3051-9", "Author": ["Membrey, Peter","Plugge,Eelco","Hawkins, Tim"], Publisher : [ new DBRef ('publisherscollection',apress._id) ] }
+{
+        "Type" : "Book",
+        "Title" : "Definitive Guide to MongoDB, the",
+        "ISBN" : "987-1-4302-3051-9",
+        "Author" : [
+                "Membrey, Peter",
+                "Plugge,Eelco",
+                "Hawkins, Tim"
+        ],
+        "Publisher" : [
+                DBRef("publisherscollection", ObjectId("53588c221697e7511678752c"))
+        ]
+}
+> db.media.save(book)
+> db.media.find().toArray()
+[
+        {
+                "_id" : ObjectId("53588ce01697e7511678752d"),
+                "Type" : "Book",
+                "Title" : "Definitive Guide to MongoDB, the",
+                "ISBN" : "987-1-4302-3051-9",
+                "Author" : [
+                        "Membrey, Peter",
+                        "Plugge,Eelco",
+                        "Hawkins, Tim"
+                ],
+                "Publisher" : [
+                        DBRef("publisherscollection", ObjectId("53588c221697e7511678752c"))
+                ]
+        }
+]

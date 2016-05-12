@@ -2,6 +2,7 @@
 var express = require('express');
 var router = express.Router();
 var Pindao = require('../models/pindao');
+var User = require('../models/user');
 
 //返回创建频道引导页
 router.get('/',function(req, res){
@@ -15,9 +16,33 @@ router.get('/createPindao', function(req, res){
 
 //表单提交
 router.post('/createPindao', function(req, res){
-	var name = req.body.name;
-	console.log("表单提交"+name);
-	res.render('pindao/pindao_index.html',{title:"频道", head: name, backUrl:"/"});
+	var pindao = new Pindao();
+	var username = req.session.username; 
+	pindao.name = req.body.name;
+	pindao.description = req.body.description;
+	pindao.tags = req.body.tags;
+	pindao.owner = username;
+	
+	var data = {};
+	pindao.save(function (err){
+		if (err) {
+			console.log(err);
+		}else{
+			User.find({username: username}, function (err, docs){
+				docs[0].myPindaoList.push (pindao._id);
+				docs[0].save(function (err){
+					if (err) {
+						data.code = 0;
+						data.message = err.errmsg;
+						console.log(err);
+					}else{
+						data.code = 1;
+						res.render('pindao/pindao_index.html',{title:"频道", head: pindao.name, backUrl:"/"});
+					}					
+				});
+			})
+		}
+	});
 });
 
 //频道主页

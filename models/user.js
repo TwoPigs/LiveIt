@@ -14,14 +14,18 @@ var UserSchema = new Schema({
         type: String,
         default: '这里是Ta的签名...'
     },
-    joinChatNum: {
-        type: Number,
-        default: 0
-    },
-    publishNum: {
-        type: Number,
-        default: 0
-    },
+    joinPindaoList: [{
+            type: Schema.Types.ObjectId,
+            ref: "Pindao"
+        }],
+    acticleList: [{
+        type: Schema.Types.ObjectId,
+        ref: "Article"
+    }],
+    myPindaoList:[{
+        type: Schema.Types.ObjectId,
+        ref: "Pindao"
+    }],
     lastLoginTime: {
         type: Date,
         default: Date.now()
@@ -33,7 +37,8 @@ var UserSchema = new Schema({
     hearts: {
         type: Number,
         default: 0
-    }
+    },
+
 });
 
 //为UserSchema添加了一个插件，该插件为User模型添加了一些验证和加密方法

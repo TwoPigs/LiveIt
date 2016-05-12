@@ -6,14 +6,8 @@ var PindaoSchema = new Schema({
 		type: String, 
 		index: {unique: true}
 	},
-	descripton:{
-		type: String,
-		default:"这是频道的自我介绍..."
-	},
-	owner:{
-		type: String,
-		default: "没人要"
-	},
+	description: String,
+	owner:{type: String},
 	icon:{
 		type: String,
 		default: "fa heat"
@@ -22,9 +16,9 @@ var PindaoSchema = new Schema({
 		type:Date,
 		default: Date.now()
 	},
-	menberList:{type: Array},//成员列表
-	tags:{type:Array},//标签
-	articleList:{type:Array}//文章
+	menberList:[{type: Schema.Types.ObjectId, ref: "User"}],//成员列表
+	tags:{type: String},//标签
+	articleList: [{type: Schema.Types.ObjectId, ref: "Article"}]//文章
 });
 
 module.exports = mongoose.model('Pindao',PindaoSchema)

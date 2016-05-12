@@ -25,7 +25,6 @@
 			tags: ""
 		},
 		submit:function(){
-			alert("submit");
 			$.ajax({
 				url: '/createPindao',
 				type: 'POST',
@@ -34,7 +33,7 @@
 				success:function(data){
 					if (data.code) {
 						alert("频道创建成功(●'v'●)");
-						location.href('/pindao/pindao_index.html?pindaoName='+data.message);
+						// location.href('/pindao/pindao_index.html?pindaoName='+data.message);
 					}
 				}
 			});
