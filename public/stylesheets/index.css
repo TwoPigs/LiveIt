@@ -369,7 +369,7 @@
 	width: 150px;
 	height: 150px;
 }
-.pd-ct-main>form>input,.pd-ct-main>form>textarea,.pd-ct-main>form>a{
+.pd-ct-main>form>input,.pd-ct-main>form>textarea,.pd-ct-main>form>button{
 	display: inline-block;
 	margin-bottom: 5px;
 	border:1px solid #fff;
@@ -378,12 +378,11 @@
 	color:#CBCBCB;
 	padding: 5px;
 }
-.pd-ct-main>form>a{
+.pd-ct-main>form>button{
 	text-align: center;
 	color:#fff;
 	background-color: #0093FF;
 	padding: 10px 50px;
-	text-decoration: none;
 }
 /*频道窗口*/
 .pd_cards{

@@ -10,7 +10,7 @@ router.get('/setting.html',function(req,res){
 
 //获得用户信息
 router.post('/getUserInfo', function(req, res, next) {
-	var username = req.body.username;
+	var username = req.session.username;
 	var data = {};
 	console.log(username);
 

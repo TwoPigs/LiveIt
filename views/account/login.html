@@ -85,9 +85,9 @@
 			data.email = vm.email;
 			$.post(url, data, function(data, textStatus, xhr) {
 				/*optional stuff to do after success */
-				alert(data.message);
 				if(data.code){
-					location.href = "/";
+					alert("登录成功(●'v'●)");
+					location.href = "/?username=" + data.message;
 				}
 			});
 		},

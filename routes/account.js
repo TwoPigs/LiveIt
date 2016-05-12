@@ -41,11 +41,14 @@ router.post('/signin', passport.authenticate('local'), function(req, res) {
     //    		data.message = "登录成功~";
     //     }
     // 此时，不仅设置了cookie，还设置了对应的哈希值
-    req.session.authenticated = true; 
+    req.session.authenticated = true;
     // 在cookie中，设置键authenticated的值为true
     res.cookie('authenticated', true);  
+    //把用户名保存到session中
+    req.session.username = req.body.username;
+    console.log("req.session.username="+req.session.username);
     data.code = 1;
-    data.message = "登录成功~";
+    data.message = req.body.username;
     return res.json(data);
 });
 

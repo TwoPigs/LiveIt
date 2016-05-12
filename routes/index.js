@@ -29,6 +29,7 @@ router.get('/messages.html', function(req, res, next) {
 //个人中心
 router.get('/userCenter.html', function(req, res, next) {
   console.log("进入userCenter.html-------");
+  console.log("到用户中心时取出username："+req.session.username);
   res.render('userCenter');
 });
 router.get('/getindex', function(req, res, next) {
