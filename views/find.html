@@ -1,4 +1,4 @@
-<div class="fx">
+<div class="fx" ms-important="findView">
 	<div class="fx-search center txt-ct">
 		<i class="fa fa-search"></i>
 		在频道里搜索
@@ -10,39 +10,38 @@
 		<span>推荐内容</span>
 		<a href="">更多...</a>
 	</div>
-	<ul class="chat-list">
+	<ul class="chat-list" ms-repeat="data">
 		<li>
-			<a href="/pindao/pindao_index.html">
+			<a ms-href="/pindao/pindao_index.html?id={{el._id}}">
 				<div class="chat-img">
 					<i class="fa fa-music"></i>
 				</div>
 				<div class="rt-box">
-					<span>我想对你说</span>
+					<span>{{el.name}}</span>
 					<i class="fa fa-cutlery rt"></i>
 				</div>
-			<a href="/pindao/pindao_index.html">
-		</li>
-		<li>
-			<a href="/pindao/pindao_index.html">
-				<div class="chat-img">
-					<i class="fa fa-music"></i>
-				</div>
-				<div class="rt-box">
-					<span>我想对你说</span>
-					<i class="fa fa-cutlery rt"></i>
-				</div>
-			<a href="/pindao/pindao_index.html">
-		</li>
-		<li>
-			<a href="/pindao/pindao_index.html">
-				<div class="chat-img">
-					<i class="fa fa-music"></i>
-				</div>
-				<div class="rt-box">
-					<span>我想对你说</span>
-					<i class="fa fa-cutlery rt"></i>
-				</div>
-			<a href="/pindao/pindao_index.html">
+			</a>
 		</li>
 	</ul>
 </div>
+
+<script>
+	var vm_find = avalon.define({
+		$id: "findView",
+		data: {},
+		init: function(){
+			$.ajax({
+				url: '/find/queryAllPindao',
+				type: 'GET',
+				success: function(result){
+					if(result.code){
+						vm_find.data = result.bizData;
+					}
+				}
+			});
+			
+		}
+	});
+	avalon.scan();
+	vm_find.init();
+</script>

@@ -10,7 +10,7 @@ var PindaoSchema = new Schema({
 	owner:{type: String},
 	icon:{
 		type: String,
-		default: "fa heat"
+		default: "fa-music"
 	},
 	creatTime:{
 		type:Date,

@@ -5,41 +5,42 @@
 	<div class="hd_back">
 		<a href="<%= backUrl%>" class="txt-thm-bule">
 			<i class="fa fa-mail-reply lf"></i>
-		</a><p class="lf"><%= head%></p>
+		</a><p class="lf">{{data.name}}</p>
 		<button class="rt" ms-click="followPindao">关注</button>
 	</div>
 	<div class="blank-block2"></div>
 	<div class="pd_cards">
-		<div class="card">
+		<div class="card" ms-repeat="data.articleList">
 			<div class="card-title ft-grey">
-				<img src="/images/pd-img.png" alt="" class="lf">
+				<img ms-src="el.author.photo" alt="" class="lf">
 				<div class="lf">
-					<span class="txt-thm-bule">nodejs</span><br>
-					<span class="ft-sm">1周前</span>
+					<span class="txt-thm-bule">{{el.author.username}}</span><br>
+					<span class="ft-sm">{{el.publishTime}}</span>
 				</div>
 				<span class="rt">删除></span>
 			</div>
 			<div class="card-text">
-				正在学习nodejs，大家一起来讨论一下{{vm.content}}
+				{{el.content}}
 			</div>
 			<ul class="card-foot ft-grey">
-				<li class="ft-sm"><i class="fa fa-heart-o"></i>&nbsp;&nbsp;4</li>
-				<li class="ft-sm"><i class="fa fa-eye"></i>&nbsp;&nbsp;5</li>
+				<li class="ft-sm"><i class="fa fa-heart-o"></i>&nbsp;&nbsp;{{el.loves}}</li>
+				<li class="ft-sm"><i class="fa fa-eye"></i>&nbsp;&nbsp;{{el.readNum}}</li>
 				<li></li>
 				<li class="ft-mid"><i class="fa fa-heart"></i></li>
 				<li class="ft-mid"><i class="fa fa-trash "></i></li>
 				<li class="ft-mid"><i class="fa fa-share-alt"></i></li>
 			</ul>
 		</div>
-		<div class="ft-input">
+	</div>
+	<div class="ft-input">
 			<img src="/images/pd-02.png" alt="">
 			<textarea name="message" id="" ms-duplex-text="content"></textarea>
 			<button ms-click="publish">发送</button>
-		</div>
 	</div>
 </body>
 </html>
 <script>
+	var id = "<%= id %>";
 	var vm = avalon.define({
 		$id: "pindao_index",
 		data: {},
@@ -47,17 +48,16 @@
 		init: function (){
 			console.log("init");
 			$.ajax({
-				url: '/pindao/initPindao',
-				type: 'POST',
-				dataType: 'json',
-				data: data,
+				url: '/pindao/initPindao?id='+id,
+				type: 'GET',
 				success: function (result){
-					//做返回处理
+					if(result.code){
+						vm.data = result.bizData;
+					}
 				}
 			});
 		},
 		publish: function(){
-			//var data = {data: vm.data, content: vm.content}
 			console.log("publish");
 			$.post('/pindao/publish', {content: vm.content}, function(data, textStatus, xhr) {
 				/*optional stuff to do after success */
@@ -74,4 +74,5 @@
 		}
 	});
 	avalon.scan();
+	vm.init();
 </script>

@@ -20,6 +20,7 @@ var routes = require('./routes/index');
 var account = require('./routes/account');
 var user = require('./routes/user');
 var pindao = require('./routes/pindao');
+var find = require('./routes/find');
 
 var app = express();
 
@@ -59,7 +60,8 @@ passport.deserializeUser(User.deserializeUser());
 app.use('/', routes);
 app.use('/account', account);//登录注册
 app.use('/user', user);//用户信息类型
-app.use('/pindao', pindao);
+app.use('/pindao', pindao);//频道
+app.use('/find', find);//搜索，发现
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
