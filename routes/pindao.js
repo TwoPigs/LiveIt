@@ -146,6 +146,7 @@ function saveArticle(author){
 }
 });
 
+//关注该频道
 router.post("/followPindao", function(req, res){
 	var data = {};
 	var username = req.session.username;
@@ -192,6 +193,18 @@ router.post("/followPindao", function(req, res){
 			});
 		}
 	})
-})
+});
+
+//用户关注的频道列表
+router.get("/queryMyPindao", function(req, res){
+	var data = {};
+	var username = req.session.username;
+	User.find({username: username},{joinPindaoList:1,myPindaoList:1}).populate("joinPindaoList myPindaoList").exec().then(function(result){
+			data.code = 1;
+			data.message = "这些都是我关注的频道( •̀ ω •́ )y";
+			data.bizData = result[0];
+			res.json(data);
+	});
+});
 
 module.exports = router;
