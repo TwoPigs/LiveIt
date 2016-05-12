@@ -5,6 +5,9 @@ var router = express.Router();
 router.get('/',function(req, res){
 	res.render('pindao/addChat_index.html',{title:"创建频道", head: "创建频道" ,backUrl:"/"});
 });
+router.get('/pindao_index.html',function(req, res){
+	res.render('pindao/pindao_index.html',{title:"频道名", head: "频道名" ,backUrl:"/"});
+});
 
 router.get('/createPindao', function(req, res){
 	res.render('pindao/creatPindao.html',{title:"创建频道", head: "创建频道" ,backUrl:"/"});

@@ -177,17 +177,23 @@
 .chat-list>li{
 	width: 90%;
 	height:50px;
-	padding: 0px 5%; 
-	display: flex;
+	padding: 0px 5%; 	
 	line-height: 50px;
 }
-.chat-list>li>.chat-img{
+
+.chat-list>li>a{
+	width: 100%;
+	display: flex;
+	text-decoration: none;
+	color:#000;
+}
+.chat-list>li>a>.chat-img{
 	flex:1;
 	text-align: center;
 	color:#4CA3E0;
 	font-size: 20px;
 }
-.chat-list>li>.rt-box{
+.chat-list>li>a>.rt-box{
 	flex:4;
 	border-bottom: #F6F6F6 1px solid;
 }
