@@ -31,7 +31,6 @@ router.post('/createPindao', function(req, res){
 		}else{
 			User.find({username: username}, function (err, docs){
 				docs[0].myPindaoList.push(pindao._id);
-				docs[0].joinPindaoList.push(pindao._id);
 				docs[0].save(function (err){
 					if (err) {
 						data.code = 0;
@@ -146,5 +145,53 @@ function saveArticle(author){
 	});
 }
 });
+
+router.post("/followPindao", function(req, res){
+	var data = {};
+	var username = req.session.username;
+	var pdId = req.body.id;
+	User.find({username: username},{joinPindaoList: 1,username: 1, photo: 1},function(err, docs){
+		if (err) {
+			data.code = 0;
+			data.message = err.errmsg;
+			console.log(err);
+			res.json(data);
+		}else{
+			docs[0].joinPindaoList.push(pdId);
+			docs[0].save(function(err){
+				if (err) {
+					data.code = 0;
+					data.message = err.errmsg;
+					console.log(err);
+					res.json(data);
+				}else{
+					Pindao.find({_id: pdId},{menberList: 1},function(err, pddocs){
+						if (err) {
+							data.code = 0;
+							data.message = err.errmsg;
+							console.log(err);
+							res.json(data);
+						}else{
+							pddocs[0].menberList.push(docs[0]);
+							pddocs[0].save(function(err){
+								if (err) {
+									data.code = 0;
+									data.message = err.errmsg;
+									console.log(err);
+									res.json(data);
+								}else{
+									data.code = 1;
+									data.message = "关注成功(ΘｏΘ)";
+									res.json(data);
+								}
+							});
+							
+						}
+					})
+				}
+			});
+		}
+	})
+})
 
 module.exports = router;

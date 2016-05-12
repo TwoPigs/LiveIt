@@ -1,4 +1,4 @@
-<ul class="chat-list">
+<ul class="chat-list" ms-importan="vm_myPindao">
 		<li>
 			<a href="/pindao/pindao_index.html">
 				<div class="chat-img">
@@ -33,3 +33,23 @@
 			</a>
 		</li>
 	</ul>
+<script>
+	var vm_myPindao = avalon.define({
+		$id: "findView",
+		data: {},
+		init: function(){
+			$.ajax({
+				url: '/find/queryAllPindao',
+				type: 'GET',
+				success: function(result){
+					if(result.code){
+						vm_myPindao.data = result.bizData;
+					}
+				}
+			});
+			
+		}
+	});
+	avalon.scan();
+	vm_myPindao.init();
+</script>

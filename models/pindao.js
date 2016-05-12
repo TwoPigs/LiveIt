@@ -16,7 +16,7 @@ var PindaoSchema = new Schema({
 		type:Date,
 		default: Date.now()
 	},
-	menberList:[{type: Schema.Types.ObjectId, ref: "User"}],//成员列表
+	menberList:[{type: Schema.Types.Mixed}],//成员列表
 	tags:{type: String},//标签
 	articleList: [{type: Schema.Types.ObjectId, ref: "Article"}]//文章
 });
