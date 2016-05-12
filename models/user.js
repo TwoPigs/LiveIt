@@ -18,7 +18,7 @@ var UserSchema = new Schema({
             type: Schema.Types.ObjectId,
             ref: "Pindao"
         }],
-    acticleList: [{
+    articleList: [{
         type: Schema.Types.ObjectId,
         ref: "Article"
     }],

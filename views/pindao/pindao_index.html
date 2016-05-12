@@ -1,8 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <% include ../partials/head.html%>
-<body>
-	<% include ../partials/hd_back.html%>
+<body ms-controller="pindao_index">
+	<div class="hd_back">
+		<a href="<%= backUrl%>" class="txt-thm-bule">
+			<i class="fa fa-mail-reply lf"></i>
+		</a><p class="lf"><%= head%></p>
+		<button class="rt" ms-click="followPindao">关注</button>
+	</div>
+	<div class="blank-block2"></div>
 	<div class="pd_cards">
 		<div class="card">
 			<div class="card-title ft-grey">
@@ -14,7 +20,7 @@
 				<span class="rt">删除></span>
 			</div>
 			<div class="card-text">
-				正在学习nodejs，大家一起来讨论一下
+				正在学习nodejs，大家一起来讨论一下{{vm.content}}
 			</div>
 			<ul class="card-foot ft-grey">
 				<li class="ft-sm"><i class="fa fa-heart-o"></i>&nbsp;&nbsp;4</li>
@@ -25,7 +31,47 @@
 				<li class="ft-mid"><i class="fa fa-share-alt"></i></li>
 			</ul>
 		</div>
+		<div class="ft-input">
+			<img src="/images/pd-02.png" alt="">
+			<textarea name="message" id="" ms-duplex-text="content"></textarea>
+			<button ms-click="publish">发送</button>
+		</div>
 	</div>
-	<% include ../partials/foot-input.html%>
 </body>
 </html>
+<script>
+	var vm = avalon.define({
+		$id: "pindao_index",
+		data: {},
+		content: "",
+		init: function (){
+			console.log("init");
+			$.ajax({
+				url: '/pindao/initPindao',
+				type: 'POST',
+				dataType: 'json',
+				data: data,
+				success: function (result){
+					//做返回处理
+				}
+			});
+		},
+		publish: function(){
+			//var data = {data: vm.data, content: vm.content}
+			console.log("publish");
+			$.post('/pindao/publish', {content: vm.content}, function(data, textStatus, xhr) {
+				/*optional stuff to do after success */
+				if (data.code) {
+					//成功就初始化
+					vm.init();
+				}else{
+					alert(data.message);
+				}
+			});
+		},
+		followPindao: function(){
+			alert("关注");
+		}
+	});
+	avalon.scan();
+</script>
