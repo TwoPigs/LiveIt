@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head lang='en'>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>微匿聊天</title>
+  <link href="css/bootstrap.min.css"  rel="stylesheet">
+  <link href="css/style.min.css"  rel="stylesheet">
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <!-- <link href="css/cover.css" rel="stylesheet">
+  -->
+  <!-- Begin emoji-picker Stylesheets -->
+  <!-- End emoji-picker Stylesheets -->
+  <!-- <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">--></head>
+
+<body class="gray-bg">
+  <div class="wrapper wrapper-content  animated fadeInRight">
+
+    <div class="row">
+
+      <div class="col-sm-12">
+
+        <div class="ibox chat-view">
+          <div class="ibox-title">
+            讨论主题：如何养猪才能年入一百万？
+          </div>
+          
+          <div class="ibox-content">
+
+            <div class="row">
+
+              <div class="col-lg-12 ">
+                <div class="chat-discussion" id="historyMsg">
+            </div>
+
+          </div>
+
+        </div>
+        <div class="input_state">
+          <input  class="form-control" placeholder="输入消息内容" id="saytext">
+          <span class="emotion"></span>
+          <span class="send_msg" id="sendBtn"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+</body>
+
+
+<!--qq face-->
+<script type="text/javascript" src="js/jquery-1.12.3.min.js"></script>
+<script type="text/javascript" src="js/jquery.qqFace.js"></script>
+<script src="scripts/hichat.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script type="text/javascript">
+$(function(){
+  $('.emotion').qqFace({
+    id : 'facebox', //表情盒子的ID
+    assign:'saytext', //给那个控件赋值
+    path:'img/face/'  //表情存放的路径
+  });
+  $(".send_msg").click(function(){
+    var str = $("#saytext").val();
+    $("#show").html(replace_em(str));
+  });
+});
+//查看结果
+function replace_em(str){
+  str = str.replace(/\</g,'&lt;');
+  str = str.replace(/\>/g,'&gt;');
+  str = str.replace(/\n/g,'<br/>');
+  str = str.replace(/\[em_([0-9]*)\]/g,'<img src="img/face/$1.gif" border="0" />');
+  return str;
+}
+</script>
+</html>

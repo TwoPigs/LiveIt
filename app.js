@@ -1,3 +1,4 @@
+//引入模块
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -11,6 +12,10 @@ var partials = require('express-partials');
 var mongoose = require('mongoose');
 //加密
 var passport = require('passport');
+//socket通信
+var server = require('http').createServer(app);
+var io = require('socket.io').listen(server);
+
 
 //数据模型
 User = require('./models/user');
@@ -21,7 +26,7 @@ var account = require('./routes/account');
 var user = require('./routes/user');
 var pindao = require('./routes/pindao');
 var find = require('./routes/find');
-
+var chat = require('./routes/chat');
 var app = express();
 
 // view engine setup
@@ -62,6 +67,7 @@ app.use('/account', account);//登录注册
 app.use('/user', user);//用户信息类型
 app.use('/pindao', pindao);//频道
 app.use('/find', find);//搜索，发现
+app.use('/chat', chat);//一对一聊天
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -94,5 +100,27 @@ app.use(function(err, req, res, next) {
   });
 });
 
+
+//暂时放在这里
+io.sockets.on('connection', function(socket) {
+
+    socket.on('login', function() {
+        
+
+        /*随机生成3位随机数*/
+        var Num='';
+        for(var i=0;i<3;i++){
+            Num+=Math.floor(Math.random()*10);
+        }
+        users.push(Num);
+        socket.emit('loginSuccess',Num);
+    });
+    
+
+    socket.on('postMsg', function(user_id,msg) {
+        socket.broadcast.emit('newMsg', user_id, msg);
+    });
+    
+});
 
 module.exports = app;
