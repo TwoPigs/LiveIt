@@ -5,7 +5,7 @@
 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>微匿聊天</title>
+  <title>聊天室</title>
   <link href="/stylesheets/bootstrap.min.css"  rel="stylesheet">
   <link href="/stylesheets/chat.min.css"  rel="stylesheet">
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
@@ -25,7 +25,7 @@
 
         <div class="ibox chat-view">
           <div class="ibox-title">
-            讨论主题：如何养猪才能年入一百万？
+            嘿~我们一起聊聊(# ^ V ^ #)~
           </div>
           
           <div class="ibox-content">
@@ -57,7 +57,8 @@
 <script type="text/javascript" src="/javascripts/lib/jquery.min.js"></script>
 <script type="text/javascript" src="/javascripts/lib/jquery.qqFace.js"></script>
 <script src="/javascripts/hichat.js"></script>
-<script src="/socket.io/socket.io.js"></script>
+<script type="text/javascript" src="https://cdn.socket.io/socket.io-1.2.1.js"></script>
+<!-- <script src="/node_modules/socket.io/socket.io.js"></script> -->
 <script type="text/javascript">
 $(function(){
   $('.emotion').qqFace({
@@ -66,6 +67,7 @@ $(function(){
     path:'/images/chat/face/'  //表情存放的路径
   });
   $(".send_msg").click(function(){
+    console.log("here to show send_msg click");
     var str = $("#saytext").val();
     $("#show").html(replace_em(str));
   });
