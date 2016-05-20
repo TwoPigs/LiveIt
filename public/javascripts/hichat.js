@@ -71,9 +71,9 @@ HiChat.prototype = {
             msgToDisplay.className='chat-message-other';
             str= '<img class="message-avatar"';
             if(userid%2==0){
-                str+='src="img/parents.png">';
+                str+='src="/images/chat/parents.png">';
             }else if(userid%2!=0){
-                str+='src="img/students.png">';
+                str+='src="/images/chat/students.png">';
             }
             str+='<div class="message"><div class="entry-trangle-l"></div><a class="message-author" href="#">ID: '+userid+'</a><span class="message-content">';
             str+=msg+'</span></div></div>';
@@ -81,9 +81,9 @@ HiChat.prototype = {
             msgToDisplay.className='chat-message-me';
             str= '<img class="message-avatar"';
             if(userid%2==0){
-                str+='src="img/parents.png">';
+                str+='src="/images/chat/parents.png">';
             }else if(userid%2!=0){
-                str+='src="img/students.png">';
+                str+='src="/images/chat/students.png">';
             }
             str+='<div class="message"><div class="entry-trangle-r"></div><a class="message-author" href="#">ID: '+userid+'</a><span class="message-content">';
             str+=msg+'</span></div></div>';
@@ -98,7 +98,7 @@ HiChat.prototype = {
     str = str.replace(/\</g,'&lt;');
     str = str.replace(/\>/g,'&gt;');
     str = str.replace(/\n/g,'<br/>');
-    str = str.replace(/\[em_([0-9]*)\]/g,'<img src="img/face/$1.gif" border="0" />');
+    str = str.replace(/\[em_([0-9]*)\]/g,'<img src="/images/chat/face/$1.gif" border="0" />');
     return str;
     }
 };
