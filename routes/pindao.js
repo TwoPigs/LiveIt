@@ -38,7 +38,7 @@ router.post('/createPindao', function(req, res){
 						console.log(err);
 					}else{
 						data.code = 1;
-						res.render('pindao/pindao_index.html',{title:"频道", head: pindao.name, backUrl:"/"});
+						res.render('pindao/pindao_index.html',{title:"频道", head: pindao.name, backUrl:"/", id: pindao._id});
 					}					
 				});
 			})

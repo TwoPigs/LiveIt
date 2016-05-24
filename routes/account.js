@@ -26,20 +26,20 @@ var usernameExist = true,
 //登录操作
 router.post('/signin', passport.authenticate('local'), function(req, res) {
     // 如果进入了该方法，则已经验证成功。
-    // var username = req.body.username || '',
-    //     password = req.body.password || '',
-    //     remember = req.body.remember || '';
-    //  usernameExist = true;
-    //  if(username.length === 0 || password.length === 0){
-	   //   	data.code = 0;
-	   //      data.message = "用户名或密码不合法~";
-    //     }else if(!usernameExist){// 将来会在这里检查用户名是否存在，我们先把它设为true
-    //     	data.code = 0;
-	   //      data.message = "用户名不存在~"; 
-    //     }else{
-    //     	data.code = 1;
-    //    		data.message = "登录成功~";
-    //     }
+    var username = req.body.username || '',
+        password = req.body.password || '',
+        remember = req.body.remember || '';
+     usernameExist = true;
+     if(username.length === 0 || password.length === 0){
+	     	data.code = 0;
+	        data.message = "用户名或密码不合法~";
+        }else if(!usernameExist){// 将来会在这里检查用户名是否存在，我们先把它设为true
+        	data.code = 0;
+	        data.message = "用户名不存在~"; 
+        }else{
+        	data.code = 1;
+       		data.message = "登录成功~";
+        }
     // 此时，不仅设置了cookie，还设置了对应的哈希值
     req.session.authenticated = true;
     // 在cookie中，设置键authenticated的值为true

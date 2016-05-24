@@ -50,6 +50,7 @@ app.use(partials());
 
 //session & cookie
 app.use(cookieParser("secret"));
+//加密的key值
 app.use(session({secret: 'hello!ziazan', 
   resave: true, 
   saveUninitialized: true
@@ -107,12 +108,12 @@ io.sockets.on('connection', function(socket) {
     socket.on('login', function() {
         
 
-        /*随机生成3位随机数*/
-        var Num='';
-        for(var i=0;i<3;i++){
-            Num+=Math.floor(Math.random()*10);
-        }
-        users.push(Num);
+        // /*随机生成3位随机数*/
+        // var Num='';
+        // for(var i=0;i<3;i++){
+        //     Num+=Math.floor(Math.random()*10);
+        // }
+        users.push('ziazan');
         socket.emit('loginSuccess',Num);
     });
     
