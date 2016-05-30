@@ -5,7 +5,7 @@ var Pindao = require('../models/pindao');
 
 router.get('/queryAllPindao', function (req, res){
 	var data = {};
-	Pindao.find({},{icon:1, name: 1, _id:1}, function(err, docs){
+	Pindao.find({},{icon:1, name: 1, _id:1, articleList:1}, function(err, docs){
 		if (err) {
 			data.code = 0;
 			data.message = err.errmsg;

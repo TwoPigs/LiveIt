@@ -1,15 +1,4 @@
 <ul class="chat-list" ms-important="myPindao">
-		<li ms-repeat="data.myPindaoList">
-			<a ms-href="/pindao/pindao_index.html?id={{el._id}}">
-				<div class="chat-img">
-					<i class="fa fa-music"></i>
-				</div>
-				<div class="rt-box">
-					<span>{{el.name}}</span>
-					<span class="num rt">12</span>
-				</div>
-			</a>
-		</li>
 		<li ms-repeat="data.joinPindaoList">
 			<a ms-href="/pindao/pindao_index.html?id=el._id">
 				<div class="chat-img">
@@ -17,7 +6,7 @@
 				</div>
 				<div class="rt-box">
 					<span>{{el.name}}</span>
-					<span class="num rt">12</span>
+					<span class="num rt">{{el.articleList.length}}</span>
 				</div>
 			</a>
 		</li>
@@ -33,6 +22,7 @@
 				success: function(result){
 					if(result.code){
 						vm_myPindao.data = result.bizData;
+						console.log(result.bizData);
 					}
 				}
 			});
