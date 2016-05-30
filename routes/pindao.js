@@ -71,6 +71,7 @@ router.get('/initPindao',function(req, res){
 router.post('/publish', function (req, res){
 	var data = {};
 	var content = req.body.content;
+	var pdName= req.body.name;
 	var date = new Date();
 	var username = req.session.username;
 	var article = new Article();
@@ -82,12 +83,12 @@ router.post('/publish', function (req, res){
 			console.log(err);	
 			res.json(data);
 		}else{
-			article.author = docs[0];
-			saveArticle(docs[0]);
+			saveArticle(docs[0], pdName);
 		}
 	})
-function saveArticle(author){
+function saveArticle(author, pdName){
 	article.author = author;
+	article.pindao =  pdName;
 	article.save(function(err, docs){
 		console.log(docs);
 		if (err) {
@@ -96,6 +97,7 @@ function saveArticle(author){
 			console.log(err);
 			res.json(data);			
 		}else{
+			//在用户表里保存
 			User.find({username: username}, function(err, docs){
 				if (err) {
 					data.code = 0;
@@ -111,6 +113,7 @@ function saveArticle(author){
 							console.log(err);
 							res.json(data);
 						}else{
+							//在频道表里保存
 							Pindao.find({name: article.pindao}, function(err, docs){
 								if (err) {
 									data.code = 0;

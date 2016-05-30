@@ -59,7 +59,7 @@
 		},
 		publish: function(){
 			console.log("publish");
-			$.post('/pindao/publish', {content: vm.content}, function(data, textStatus, xhr) {
+			$.post('/pindao/publish', {content: vm.content,name: vm.data.name}, function(data, textStatus, xhr) {
 				/*optional stuff to do after success */
 				if (data.code) {
 					//成功就初始化
